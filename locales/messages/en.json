@@ -1,0 +1,9 @@
+{
+  "user": {
+    "userListView": "User List View",
+    "userDetails": "User Details",
+    "editUser": "Edit User",
+    "deleteUser": "Delete User",
+    "addUser": "Add User"
+  }
+}

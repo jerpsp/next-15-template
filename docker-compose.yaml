@@ -1,0 +1,15 @@
+version: "3.9"
+
+networks:
+  default:
+    name: next-express-network
+
+services:
+  frontend:
+    build: .
+    container_name: next-15
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    restart: always
