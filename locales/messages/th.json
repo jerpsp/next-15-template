@@ -5,5 +5,9 @@
     "editUser": "แก้ไขผู้ใช้",
     "deleteUser": "ลบผู้ใช้",
     "addUser": "เพิ่มผู้ใช้"
-  }
+  },
+  "required": "{name} เป็นข้อมูลที่จำเป็น",
+  "email": "อีเมล",
+  "password": "รหัสผ่าน",
+  "confirmPassword": "ยืนยันรหัสผ่าน"
 }

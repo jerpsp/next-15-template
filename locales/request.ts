@@ -14,3 +14,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
     messages: (await import(`./messages/${locale}.json`)).default,
   }
 })
+
+export type TranslationProps = (
+  key: string,
+  arg?: { [key: string]: string }
+) => string

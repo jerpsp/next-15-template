@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
+import { ThemeModeDisplay } from "../theme"
 
 type UserProps = {
   users: any
@@ -29,6 +30,7 @@ export default function UserListView() {
 
   return (
     <div>
+      <ThemeModeDisplay />
       <h1>{t("user.userListView")}</h1>
 
       {data?.users.map((user: any) => (

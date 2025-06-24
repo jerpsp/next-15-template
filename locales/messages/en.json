@@ -5,5 +5,9 @@
     "editUser": "Edit User",
     "deleteUser": "Delete User",
     "addUser": "Add User"
-  }
+  },
+  "required": "{name} must be required",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm Password"
 }

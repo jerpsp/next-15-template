@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { notFound } from "next/navigation"
 import GuestLayout from "@/layout/guest"
+import { NextAuthProvider } from "@/auth/context/next-auth"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,11 +25,13 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body style={{ margin: 0 }}>
-        <NextIntlClientProvider>
-          <ThemeProvider>
-            <GuestLayout>{children}</GuestLayout>
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        <NextAuthProvider>
+          <NextIntlClientProvider>
+            <ThemeProvider>
+              <GuestLayout>{children}</GuestLayout>
+            </ThemeProvider>
+          </NextIntlClientProvider>
+        </NextAuthProvider>
       </body>
     </html>
   )
