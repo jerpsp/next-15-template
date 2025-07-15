@@ -4,7 +4,19 @@
     "userDetails": "User Details",
     "editUser": "Edit User",
     "deleteUser": "Delete User",
-    "addUser": "Add User"
+    "addUser": "Add User",
+    "email": "Email",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "role": "Role"
+  },
+  "signIn": {
+    "signIn": "Sign In",
+    "pleaseSignIn": "Please sign in to continue.",
+    "email": "Email Address",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?"
   },
   "required": "{name} must be required",
   "email": "Email",

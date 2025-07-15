@@ -4,7 +4,19 @@
     "userDetails": "รายละเอียดผู้ใช้",
     "editUser": "แก้ไขผู้ใช้",
     "deleteUser": "ลบผู้ใช้",
-    "addUser": "เพิ่มผู้ใช้"
+    "addUser": "เพิ่มผู้ใช้",
+    "email": "อีเมล",
+    "firstName": "ชื่อ",
+    "lastName": "นามสกุล",
+    "role": "Role"
+  },
+  "signIn": {
+    "signIn": "เข้าสู่ระบบ",
+    "pleaseSignIn": "กรุณาเข้าสู่ระบบเพื่อดำเนินการต่อ",
+    "email": "ที่อยู่อีเมล",
+    "password": "รหัสผ่าน",
+    "rememberMe": "จดจำฉัน",
+    "forgotPassword": "ลืมรหัสผ่าน?"
   },
   "required": "{name} เป็นข้อมูลที่จำเป็น",
   "email": "อีเมล",

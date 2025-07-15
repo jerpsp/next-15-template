@@ -5,6 +5,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { notFound } from "next/navigation"
 import GuestLayout from "@/layout/guest"
 import { NextAuthProvider } from "@/auth/context/next-auth"
+import ReactQueryProvider from "@/tanstack/query/query-provider"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,11 +27,13 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body style={{ margin: 0 }}>
         <NextAuthProvider>
-          <NextIntlClientProvider>
-            <ThemeProvider>
-              <GuestLayout>{children}</GuestLayout>
-            </ThemeProvider>
-          </NextIntlClientProvider>
+          <ReactQueryProvider>
+            <NextIntlClientProvider>
+              <ThemeProvider>
+                <GuestLayout>{children}</GuestLayout>
+              </ThemeProvider>
+            </NextIntlClientProvider>
+          </ReactQueryProvider>
         </NextAuthProvider>
       </body>
     </html>

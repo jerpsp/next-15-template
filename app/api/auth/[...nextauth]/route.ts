@@ -52,8 +52,8 @@ const domainSignin = CredentialsProvider({
 // })
 
 type CredentialsJWTProps = {
-  accessToken: string
-  refreshToken: string
+  access_token: string
+  refresh_token: string
 }
 
 const customJWT = (account: Account | null, user: User | AdapterUser) => {
@@ -78,15 +78,15 @@ const customJWT = (account: Account | null, user: User | AdapterUser) => {
 // }
 
 const credentialsJWT = (account: Account | null, user: CredentialsJWTProps) => {
-  const { accessToken, refreshToken } = user
-  const decodedUser = jwtDecode(accessToken as string)
+  const { access_token, refresh_token } = user
+  const decodedUser = jwtDecode(access_token as string)
 
   return {
     provider: account?.provider,
-    accessToken,
+    accessToken: access_token,
     accessTokenExpires: (decodedUser.exp as number) * 1000,
-    refreshToken,
-    user: pick(decodedUser, ["id", "email", "firstName", "lastName", "role"]),
+    refreshToken: refresh_token,
+    user: pick(decodedUser, ["user_id", "email"]),
   }
 }
 
@@ -135,18 +135,18 @@ const credentialsRefreshAccessToken = async (token: JWT) => {
     const response = await axios.post(
       `${process.env.AUTH_ENDPOINT}/api/v1/auth/refresh`,
       {
-        refreshToken: token.refreshToken,
+        refresh_token: token.refreshToken,
       }
     )
 
-    const { accessToken, refreshToken }: TokenSet = await response.data
-    const { exp } = jwtDecode(accessToken as string)
+    const { access_token, refresh_token }: TokenSet = await response.data
+    const { exp } = jwtDecode(access_token as string)
 
     return {
       ...token,
-      accessToken,
+      accessToken: access_token,
       accessTokenExpires: (exp as number) * 1000,
-      refreshToken,
+      refreshToken: refresh_token,
     }
   } catch (error) {
     console.error("Error refreshing access token", error)
