@@ -2,7 +2,9 @@
 
 import { useTranslations } from "next-intl"
 import { ThemeModeDisplay } from "../theme"
-import { useUsers } from "@/tanstack/query/hooks/useUsers"
+import { useUsers, UsersParams } from "@/tanstack/query/hooks/useUsers"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 import {
   Container,
   Typography,
@@ -17,11 +19,30 @@ import {
   CircularProgress,
   Alert,
   Skeleton,
+  TablePagination,
 } from "@mui/material"
 
 export default function UserListView() {
   const t = useTranslations()
-  const { data, isLoading, error } = useUsers()
+  const router = useRouter()
+  const [page, setPage] = useState<number>(0)
+  const [rowsPerPage, setRowsPerPage] = useState<number>(10)
+
+  const { data, isLoading, error, isFetching } = useUsers({
+    page: page + 1,
+    limit: rowsPerPage,
+  })
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage)
+  }
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setRowsPerPage(parseInt(event.target.value, 10))
+    setPage(0)
+  }
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
@@ -59,7 +80,9 @@ export default function UserListView() {
             <CircularProgress />
           </Box>
         ) : !data?.users || data.users.length === 0 ? (
-          <Alert severity="info">No users found</Alert>
+          <Alert severity="info">
+            {t("user.noUsersFound") || "No users found"}
+          </Alert>
         ) : (
           <TableContainer>
             <Table>
@@ -84,25 +107,60 @@ export default function UserListView() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {data.users.map((user, index) => (
-                  <TableRow key={user.id} hover>
-                    <TableCell>{index + 1}</TableCell>
-                    <TableCell>{user.email}</TableCell>
-                    <TableCell>{user.first_name}</TableCell>
-                    <TableCell>{user.last_name}</TableCell>
-                  </TableRow>
-                ))}
+                {isFetching
+                  ? // Skeleton loading state
+                    Array.from(new Array(rowsPerPage)).map((_, index) => (
+                      <TableRow key={index}>
+                        <TableCell>
+                          <Skeleton animation="wave" />
+                        </TableCell>
+                        <TableCell>
+                          <Skeleton animation="wave" />
+                        </TableCell>
+                        <TableCell>
+                          <Skeleton animation="wave" />
+                        </TableCell>
+                        <TableCell>
+                          <Skeleton animation="wave" />
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  : data.users.map((user, index) => (
+                      <TableRow
+                        key={user.id}
+                        hover
+                        onClick={() => router.push(`/users/${user.id}`)}
+                        sx={{ cursor: "pointer" }}
+                      >
+                        <TableCell>{page * rowsPerPage + index + 1}</TableCell>
+                        <TableCell>{user.email}</TableCell>
+                        <TableCell>{user.first_name}</TableCell>
+                        <TableCell>{user.last_name}</TableCell>
+                      </TableRow>
+                    ))}
               </TableBody>
             </Table>
           </TableContainer>
         )}
 
         {data && (
-          <Box sx={{ mt: 2, textAlign: "right" }}>
-            <Typography variant="body2" color="text.secondary">
-              Total Users: {data.count}
-            </Typography>
-          </Box>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={data.total}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+            labelDisplayedRows={({ from, to, count }) =>
+              `${from}-${to} ${t("pagination.of") || "of"} ${
+                count !== -1
+                  ? count
+                  : `${t("pagination.moreThan") || "more than"} ${to}`
+              }`
+            }
+            labelRowsPerPage={t("pagination.rowsPerPage") || "Rows per page:"}
+          />
         )}
       </Paper>
     </Container>

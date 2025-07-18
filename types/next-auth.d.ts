@@ -14,6 +14,7 @@ declare module "next-auth" {
       active?: boolean
     }
     provider?: string
+    error?: string
   }
 
   interface Profile {

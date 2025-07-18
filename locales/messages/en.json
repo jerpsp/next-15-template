@@ -1,6 +1,7 @@
 {
   "user": {
     "userListView": "User List View",
+    "userDetailView": "User Detail",
     "userDetails": "User Details",
     "editUser": "Edit User",
     "deleteUser": "Delete User",
@@ -8,7 +9,12 @@
     "email": "Email",
     "firstName": "First Name",
     "lastName": "Last Name",
-    "role": "Role"
+    "role": "Role",
+    "id": "ID",
+    "name": "Name",
+    "profile": "User Profile",
+    "notFound": "User not found",
+    "noUsersFound": "No users found"
   },
   "signIn": {
     "signIn": "Sign In",
@@ -21,5 +27,14 @@
   "required": "{name} must be required",
   "email": "Email",
   "password": "Password",
-  "confirmPassword": "Confirm Password"
+  "confirmPassword": "Confirm Password",
+  "common": {
+    "back": "Back"
+  },
+  "pagination": {
+    "of": "of",
+    "moreThan": "more than",
+    "rowsPerPage": "Rows per page:",
+    "totalUsers": "Total Users: {count}"
+  }
 }

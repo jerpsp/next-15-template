@@ -29,9 +29,7 @@ export default async function LocaleLayout({
         <NextAuthProvider>
           <ReactQueryProvider>
             <NextIntlClientProvider>
-              <ThemeProvider>
-                <GuestLayout>{children}</GuestLayout>
-              </ThemeProvider>
+              <ThemeProvider>{children}</ThemeProvider>
             </NextIntlClientProvider>
           </ReactQueryProvider>
         </NextAuthProvider>

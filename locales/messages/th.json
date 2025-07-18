@@ -1,6 +1,7 @@
 {
   "user": {
     "userListView": "มุมมองรายการผู้ใช้",
+    "userDetailView": "รายละเอียดผู้ใช้",
     "userDetails": "รายละเอียดผู้ใช้",
     "editUser": "แก้ไขผู้ใช้",
     "deleteUser": "ลบผู้ใช้",
@@ -8,7 +9,12 @@
     "email": "อีเมล",
     "firstName": "ชื่อ",
     "lastName": "นามสกุล",
-    "role": "Role"
+    "role": "Role",
+    "id": "รหัส",
+    "name": "ชื่อ",
+    "profile": "ข้อมูลผู้ใช้",
+    "notFound": "ไม่พบผู้ใช้",
+    "noUsersFound": "ไม่พบผู้ใช้"
   },
   "signIn": {
     "signIn": "เข้าสู่ระบบ",
@@ -21,5 +27,14 @@
   "required": "{name} เป็นข้อมูลที่จำเป็น",
   "email": "อีเมล",
   "password": "รหัสผ่าน",
-  "confirmPassword": "ยืนยันรหัสผ่าน"
+  "confirmPassword": "ยืนยันรหัสผ่าน",
+  "common": {
+    "back": "ย้อนกลับ"
+  },
+  "pagination": {
+    "of": "จาก",
+    "moreThan": "มากกว่า",
+    "rowsPerPage": "แถวต่อหน้า:",
+    "totalUsers": "จำนวนผู้ใช้ทั้งหมด: {count}"
+  }
 }

@@ -12,10 +12,21 @@ export type User = {
 
 export type UsersResponse = {
   users: User[]
-  count: number
+  total: number
+  page: number
+  per_page: number
+  total_pages: number
 }
 
-const fetchUsers = async (token: string | undefined): Promise<UsersResponse> => {
+export type UsersParams = {
+  page: number
+  limit: number
+}
+
+const fetchUsers = async (
+  token: string | undefined,
+  params: UsersParams
+): Promise<UsersResponse> => {
   if (!token) {
     throw new Error("No access token available")
   }
@@ -24,18 +35,22 @@ const fetchUsers = async (token: string | undefined): Promise<UsersResponse> => 
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    params: {
+      page: params.page,
+      limit: params.limit
+    }    
   })
   
   return data
 }
 
-export function useUsers() {
+export function useUsers(params: UsersParams = { page: 1, limit: 10 }) {
   const { data: session } = useSession()
   const accessToken = session?.accessToken as string | undefined
 
   return useQuery({
-    queryKey: ["users", accessToken],
-    queryFn: () => fetchUsers(accessToken),
+    queryKey: ["users", accessToken, params.page, params.limit],
+    queryFn: () => fetchUsers(accessToken, params),
     enabled: !!accessToken,
     staleTime: 5 * 60 * 1000, // 5 minutes    
   })
