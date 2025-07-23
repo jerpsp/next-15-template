@@ -1,4 +1,4 @@
-import { Roboto_Mono } from "next/font/google"
+import { Roboto_Mono, Chakra_Petch } from "next/font/google"
 
 export function remToPx(value: string) {
   return Math.round(parseFloat(value) * 16)
@@ -36,9 +36,10 @@ declare module "@mui/material/styles" {
   }
 }
 
-export const primaryFont = Roboto_Mono({
-  subsets: ["latin"],
-  display: "swap",
+export const primaryFont = Chakra_Petch({
+  subsets: ["latin", "thai"],
+  variable: "--font-primary",
+  weight: ["400", "500", "600", "700"],
 })
 
 export const typography = {

@@ -98,7 +98,7 @@ export function palette(mode: "light" | "dark") {
     ...base,
     mode: "light",
     text: {
-      primary: grey[800],
+      primary: grey[900],
       secondary: grey[600],
       disabled: grey[500],
     },

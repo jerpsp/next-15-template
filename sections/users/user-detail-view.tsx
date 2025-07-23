@@ -21,7 +21,7 @@ export default function UserDetailView({ userId }: { userId: string }) {
   const { data, isLoading, error } = useUser(userId)
 
   const handleBack = () => {
-    router.back()
+    router.push("/users")
   }
 
   return (
@@ -68,7 +68,9 @@ export default function UserDetailView({ userId }: { userId: string }) {
             <CircularProgress />
           </Box>
         ) : !data?.user ? (
-          <Alert severity="info">{t("user.notFound") || "User not found"}</Alert>
+          <Alert severity="info">
+            {t("user.notFound") || "User not found"}
+          </Alert>
         ) : (
           <Box>
             <Typography variant="h6" fontWeight="bold" gutterBottom>

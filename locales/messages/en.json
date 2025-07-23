@@ -24,6 +24,11 @@
     "rememberMe": "Remember me",
     "forgotPassword": "Forgot password?"
   },
+  "signOut": "Logout",
+  "themeToggle": {
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode"
+  },
   "required": "{name} must be required",
   "email": "Email",
   "password": "Password",

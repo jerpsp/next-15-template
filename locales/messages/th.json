@@ -24,6 +24,11 @@
     "rememberMe": "จดจำฉัน",
     "forgotPassword": "ลืมรหัสผ่าน?"
   },
+  "signOut": "ลงชื่อออก",
+  "themeToggle": {
+    "darkMode": "โหมดมืด",
+    "lightMode": "โหมดสว่าง"
+  },
   "required": "{name} เป็นข้อมูลที่จำเป็น",
   "email": "อีเมล",
   "password": "รหัสผ่าน",
