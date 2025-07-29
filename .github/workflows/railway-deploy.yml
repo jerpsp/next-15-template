@@ -1,0 +1,55 @@
+name: Next.js CI/CD
+
+on:
+  push:
+    tags:
+      - "v*"
+  pull_request:
+    branches: [deploy/railway]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test
+        run: npm test
+
+  deploy:
+    name: Deploy to Railway
+    needs: test
+    # if: github.event_name == 'push' && (github.ref == 'refs/heads/deploy/railway' || github.ref == 'refs/heads/deploy/railway')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
+
+      - name: Deploy to Railway
+        run: railway up --service next-15-template
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
