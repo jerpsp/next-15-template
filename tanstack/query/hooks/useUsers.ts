@@ -28,10 +28,11 @@ const fetchUsers = async (
   params: UsersParams
 ): Promise<UsersResponse> => {
   const baseUrl = process.env.NEXT_PUBLIC_API_ENDPOINT
+  console.log(baseUrl)
   if (!baseUrl) {
     throw new Error("API endpoint is not defined")
   }
-  
+
   if (!token) {
     throw new Error("No access token available")
   }
