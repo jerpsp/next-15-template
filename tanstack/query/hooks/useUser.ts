@@ -8,11 +8,16 @@ export type UserResponse = {
 }
 
 const fetchUser = async (userId: string, token: string | undefined): Promise<UserResponse> => {
+  const baseUrl = process.env.NEXT_PUBLIC_API_ENDPOINT
+  if (!baseUrl) {
+    throw new Error("API endpoint is not defined")
+  }
+  
   if (!token) {
     throw new Error("No access token available")
   }
 
-  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/v1/users/${userId}`, {
+  const { data } = await axios.get(`${baseUrl}/api/v1/users/${userId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
