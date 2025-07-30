@@ -12,8 +12,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-ARG APP_ENV
-ENV APP_ENV=$APP_ENV
+ENV APP_ENV=production
 
 COPY environments/$APP_ENV .env
 
