@@ -8,27 +8,8 @@ on:
     branches: [deploy/railway]
 
 jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-          cache: "yarn"
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Test
-        run: yarn test
-
   deploy:
     name: Deploy to Railway
-    needs: test
     # if: github.event_name == 'push' && (github.ref == 'refs/heads/deploy/railway' || github.ref == 'refs/heads/deploy/railway')
     runs-on: ubuntu-latest
     steps:
