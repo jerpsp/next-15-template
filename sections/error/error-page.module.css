@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 2rem;
+  gap: 2rem;
+  /* Support for theme */
+  background-color: var(--mui-palette-background-default);
+  color: var(--mui-palette-text-primary);
+}
+
+.content {
+  max-width: 500px;
+  text-align: left;
+}
+
+.errorCode {
+  font-size: 6rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+  background: linear-gradient(90deg, var(--mui-palette-secondary-main), var(--mui-palette-primary-main));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Fallback for browsers that don't support gradient text */
+  color: var(--mui-palette-primary-main);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  color: var(--mui-palette-text-primary);
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--mui-palette-text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  min-width: 150px;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* SVG filter for dark mode */
+:global([data-mui-color-scheme="dark"]) .imageContainer svg {
+  filter: brightness(0.8) contrast(1.2);
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  
+  .content {
+    text-align: center;
+  }
+  
+  .actions {
+    justify-content: center;
+  }
+  
+  .imageContainer img {
+    max-width: 100%;
+    height: auto;
+  }
+}

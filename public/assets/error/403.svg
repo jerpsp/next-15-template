@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <style>
+    .st0{fill:none;}
+    .st1{fill:var(--mui-palette-secondary-main, #8E33FF);}
+    .st2{fill:var(--mui-palette-primary-main, #00A76F);}
+    .st3{fill:#FFFFFF;}
+    .st4{fill:var(--mui-palette-grey-300, #DFE3E8);}
+    .st5{fill:currentColor;}
+  </style>
+  <g id="background">
+    <path class="st0" d="M800,600H0V0h800V600z"/>
+  </g>
+  <g id="computer">
+    <path class="st4" d="M620,400H180c-11,0-20-9-20-20V150c0-11,9-20,20-20h440c11,0,20,9,20,20v230C640,391,631,400,620,400z"/>
+    <path class="st3" d="M600,370H200V150c0-5.5,4.5-10,10-10h380c5.5,0,10,4.5,10,10V370z"/>
+    <path class="st4" d="M680,450H120c-5.5,0-10-4.5-10-10v-30c0-5.5,4.5-10,10-10h560c5.5,0,10,4.5,10,10v30C690,445.5,685.5,450,680,450z"/>
+    <path class="st4" d="M440,450h-80l-10-50h100L440,450z"/>
+  </g>
+  <g id="lock">
+    <circle class="st1" cx="400" cy="230" r="50"/>
+    <path class="st3" d="M420,230h-40c-5.5,0-10,4.5-10,10v30c0,5.5,4.5,10,10,10h40c5.5,0,10-4.5,10-10v-30C430,234.5,425.5,230,420,230z"/>
+    <path class="st3" d="M410,230v-10c0-5.5-4.5-10-10-10s-10,4.5-10,10v10"/>
+    <circle class="st2" cx="400" cy="250" r="8"/>
+    <rect x="398" y="250" class="st2" width="4" height="15"/>
+  </g>
+  <g id="text">
+    <path class="st5" d="M355,300h90c2.8,0,5,2.2,5,5v5c0,2.8-2.2,5-5,5h-90c-2.8,0-5-2.2-5-5v-5C350,302.2,352.2,300,355,300z"/>
+    <path class="st5" d="M330,325h140c2.8,0,5,2.2,5,5v5c0,2.8-2.2,5-5,5H330c-2.8,0-5-2.2-5-5v-5C325,327.2,327.2,325,330,325z"/>
+    <path class="st5" d="M340,350h120c2.8,0,5,2.2,5,5v5c0,2.8-2.2,5-5,5H340c-2.8,0-5-2.2-5-5v-5C335,352.2,337.2,350,340,350z"/>
+  </g>
+</svg>

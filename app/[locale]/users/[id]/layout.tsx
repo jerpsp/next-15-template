@@ -9,7 +9,7 @@ export default function UserDetailLayout({
   children: React.ReactNode
 }) {
   return (
-    <RoleGuard allowedRoles={["admin"]} redirectTo="/users">
+    <RoleGuard allowedRoles={["admin"]} redirectTo="/error/403">
       <AuthGuard>
         <AuthLayout>{children}</AuthLayout>
       </AuthGuard>

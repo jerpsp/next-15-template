@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <style>
+    .st0{fill:none;}
+    .st1{fill:var(--mui-palette-secondary-main, #8E33FF);}
+    .st2{fill:var(--mui-palette-primary-main, #00A76F);}
+    .st3{fill:#FFFFFF;}
+    .st4{fill:var(--mui-palette-grey-300, #DFE3E8);}
+    .st5{fill:currentColor;}
+  </style>
+  <g id="background">
+    <path class="st0" d="M800,600H0V0h800V600z"/>
+  </g>
+  <g id="planet">
+    <circle class="st1" cx="400" cy="230" r="80"/>
+    <path class="st2" d="M400,310c-44.1,0-80-35.9-80-80c0-30.9,17.6-57.7,43.3-71c-17.8,16.5-28.9,40-28.9,66c0,49.7,40.3,90,90,90c26,0,49.5-11.1,66-28.9C457.7,292.4,430.9,310,400,310z"/>
+    <ellipse class="st3" cx="350" cy="190" rx="20" ry="10"/>
+    <ellipse class="st3" cx="450" cy="250" rx="15" ry="7.5"/>
+    <ellipse class="st3" cx="410" cy="210" rx="10" ry="5"/>
+  </g>
+  <g id="rocket">
+    <path class="st4" d="M480,350c0,0-30-20-30-100c0-49.7,40.3-90,90-90c80,0,100,30,100,30s-30,20-30,100c0,49.7-40.3,90-90,90C440,380,480,350,480,350z"/>
+    <circle class="st2" cx="540" cy="260" r="25"/>
+    <path class="st5" d="M460,330l-60,60l30,30l60-60"/>
+    <path class="st5" d="M600,190l-60,60l30,30l60-60"/>
+  </g>
+  <g id="text">
+    <path class="st5" d="M355,400h90c2.8,0,5,2.2,5,5v5c0,2.8-2.2,5-5,5h-90c-2.8,0-5-2.2-5-5v-5C350,402.2,352.2,400,355,400z"/>
+    <path class="st5" d="M330,425h140c2.8,0,5,2.2,5,5v5c0,2.8-2.2,5-5,5H330c-2.8,0-5-2.2-5-5v-5C325,427.2,327.2,425,330,425z"/>
+    <path class="st5" d="M340,450h120c2.8,0,5,2.2,5,5v5c0,2.8-2.2,5-5,5H340c-2.8,0-5-2.2-5-5v-5C335,452.2,337.2,450,340,450z"/>
+  </g>
+</svg>

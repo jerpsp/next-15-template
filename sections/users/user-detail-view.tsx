@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl"
 import { useUser } from "@/tanstack/query/hooks/User/useUser"
-import { useRouter } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import {
   Container,
   Typography,
@@ -15,10 +15,11 @@ import {
 } from "@mui/material"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 
-export default function UserDetailView({ userId }: { userId: string }) {
+export default function UserDetailView() {
+  const { id: userID } = useParams<{ id: string }>()
   const t = useTranslations()
   const router = useRouter()
-  const { data, isLoading, error } = useUser(userId)
+  const { data, isLoading, error } = useUser(userID)
 
   const handleBack = () => {
     router.push("/users")
