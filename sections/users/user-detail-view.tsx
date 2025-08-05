@@ -1,7 +1,7 @@
 "use client"
 
 import { useTranslations } from "next-intl"
-import { useUser } from "@/tanstack/query/hooks/useUser"
+import { useUser } from "@/tanstack/query/hooks/User/useUser"
 import { useRouter } from "next/navigation"
 import {
   Container,

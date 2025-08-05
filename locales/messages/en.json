@@ -21,6 +21,7 @@
     "pleaseSignIn": "Please sign in to continue.",
     "email": "Email Address",
     "password": "Password",
+    "confirmPassword": "Confirm Password",
     "rememberMe": "Remember me",
     "forgotPassword": "Forgot password?"
   },
@@ -30,16 +31,27 @@
     "lightMode": "Light Mode"
   },
   "required": "{name} must be required",
+  "passwordsMustMatch": "Passwords must match",
   "email": "Email",
   "password": "Password",
   "confirmPassword": "Confirm Password",
   "common": {
-    "back": "Back"
+    "back": "Back",
+    "submit": "Submit"
   },
   "pagination": {
     "of": "of",
     "moreThan": "more than",
     "rowsPerPage": "Rows per page:",
     "totalUsers": "Total Users: {count}"
+  },
+  "resetPassword": {
+    "forgotPassword": "Forgot Password",
+    "resetPassword": "Reset Password",
+    "emailSent": "An email has been sent to {email} with instructions to reset your password if that email is registered.",
+    "enterEmail": "Please enter your email address to receive a link to reset your password.",
+    "enterNewPassword": "Please enter your new password.",
+    "passwordResetSuccess": "Your password has been reset successfully.",
+    "submit": "Submit Password Reset Request"
   }
 }

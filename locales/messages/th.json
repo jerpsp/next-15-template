@@ -21,6 +21,7 @@
     "pleaseSignIn": "กรุณาเข้าสู่ระบบเพื่อดำเนินการต่อ",
     "email": "ที่อยู่อีเมล",
     "password": "รหัสผ่าน",
+    "confirmPassword": "ยืนยันรหัสผ่าน",
     "rememberMe": "จดจำฉัน",
     "forgotPassword": "ลืมรหัสผ่าน?"
   },
@@ -30,16 +31,27 @@
     "lightMode": "โหมดสว่าง"
   },
   "required": "{name} เป็นข้อมูลที่จำเป็น",
+  "passwordsMustMatch": "รหัสผ่านต้องตรงกัน",
   "email": "อีเมล",
   "password": "รหัสผ่าน",
   "confirmPassword": "ยืนยันรหัสผ่าน",
   "common": {
-    "back": "ย้อนกลับ"
+    "back": "ย้อนกลับ",
+    "submit": "ยืนยัน"
   },
   "pagination": {
     "of": "จาก",
     "moreThan": "มากกว่า",
     "rowsPerPage": "แถวต่อหน้า:",
     "totalUsers": "จำนวนผู้ใช้ทั้งหมด: {count}"
+  },
+  "resetPassword": {
+    "forgotPassword": "ลืมรหัสผ่าน",
+    "resetPassword": "รีเซ็ตรหัสผ่าน",
+    "emailSent": "อีเมลสำหรับรีเซ็ตรหัสผ่านถูกส่งไปยัง {email} หากอีเมลนี้มีในระบบ จะได้รับอีเมลรีเซ็ตรหัสผ่าน",
+    "enterEmail": "กรุณากรอกอีเมลของคุณเพื่อรับลิงก์สำหรับรีเซ็ตรหัสผ่าน",
+    "enterNewPassword": "กรุณากรอกรหัสผ่านใหม่ของคุณ",
+    "passwordResetSuccess": "รหัสผ่านของคุณถูกรีเซ็ตสำเร็จ",
+    "submit": "ส่งคำขอรีเซ็ตรหัสผ่าน"
   }
 }

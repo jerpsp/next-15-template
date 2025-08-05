@@ -152,7 +152,7 @@ export default function SignInView() {
             </Button>
 
             <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-              <Link href="#" variant="body2">
+              <Link href="/forgot-password" variant="body2">
                 {t("signIn.forgotPassword") || "Forgot password?"}
               </Link>
             </Box>

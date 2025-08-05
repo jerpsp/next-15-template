@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl"
 import { ThemeModeDisplay } from "../theme"
-import { useUsers, UsersParams } from "@/tanstack/query/hooks/useUsers"
+import { useUsers, UsersParams } from "@/tanstack/query/hooks/User/useUsers"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import {

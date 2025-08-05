@@ -1,13 +1,16 @@
-import type { Metadata } from "next"
+"use client"
 
-export const metadata: Metadata = {
-  title: "User Detail",
-}
+import { AuthGuard } from "@/auth/guard"
+import AuthLayout from "@/layout/auth"
 
 export default function UserDetailLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return <>{children}</>
+  return (
+    <AuthGuard>
+      <AuthLayout>{children}</AuthLayout>
+    </AuthGuard>
+  )
 }
