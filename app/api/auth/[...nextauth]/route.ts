@@ -86,7 +86,7 @@ const credentialsJWT = (account: Account | null, user: CredentialsJWTProps) => {
     accessToken: access_token,
     accessTokenExpires: (decodedUser.exp as number) * 1000,
     refreshToken: refresh_token,
-    user: pick(decodedUser, ["user_id", "email"]),
+    user: pick(decodedUser, ["user_id", "email", "role"]),
   }
 }
 

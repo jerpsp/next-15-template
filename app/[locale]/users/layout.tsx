@@ -1,6 +1,6 @@
 "use client"
 
-import { AuthGuard } from "@/auth/guard"
+import { AuthGuard, RoleGuard } from "@/auth/guard"
 import AuthLayout from "@/layout/auth"
 
 export default function UserLayout({
@@ -9,8 +9,10 @@ export default function UserLayout({
   children: React.ReactNode
 }) {
   return (
-    <AuthGuard>
-      <AuthLayout>{children}</AuthLayout>
-    </AuthGuard>
+    <RoleGuard allowedRoles={["admin", "moderator"]}>
+      <AuthGuard>
+        <AuthLayout>{children}</AuthLayout>
+      </AuthGuard>
+    </RoleGuard>
   )
 }

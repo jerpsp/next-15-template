@@ -7,22 +7,33 @@ import { getToken } from "next-auth/jwt"
 const intlMiddleware = createMiddleware(routing)
 
 export default async function middleware(request: NextRequest) {
-  // First, handle the intl routing
   const response = intlMiddleware(request)
 
-  // Check for auth errors
   const token = await getToken({ req: request })
   
-  // If we have a refresh token error, clear cookies to force sign out
+  // Check for auth errors
   if (token?.error === "RefreshAccessTokenError") {
     const signoutResponse = NextResponse.redirect(new URL("/signin", request.url))
     
-    // Clear the auth cookies
     signoutResponse.cookies.delete("next-auth.session-token")
     signoutResponse.cookies.delete("next-auth.callback-url")
     signoutResponse.cookies.delete("next-auth.csrf-token")
     
     return signoutResponse
+  }
+
+  // Redirect users with role "user" to dashboard if they try to access restricted pages
+  if (token) {
+    const userRole = (token as any).user?.role
+    if (userRole === "user") {
+      const path = request.nextUrl.pathname
+      // Check if the user is trying to access restricted pages
+      if (path.includes("/users") || 
+          (path !== "/dashboard" && !path.includes("/dashboard") && 
+           !path.includes("/signin") && !path.includes("/api"))) {
+        return NextResponse.redirect(new URL("/dashboard", request.url))
+      }
+    }
   }
 
   return response

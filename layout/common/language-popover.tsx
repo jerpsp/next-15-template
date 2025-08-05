@@ -2,7 +2,6 @@ import { useCallback, useState, MouseEvent } from "react"
 import { useRouter, usePathname } from "@/locales/navigation"
 import Cookies from "js-cookie"
 import { MenuItem, IconButton, Typography, Popover } from "@mui/material"
-import Image from "next/image"
 
 export default function LanguagePopover() {
   const router = useRouter()
