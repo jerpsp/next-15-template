@@ -20,7 +20,9 @@ import {
   Alert,
   Skeleton,
   TablePagination,
+  Button,
 } from "@mui/material"
+import AddIcon from "@mui/icons-material/Add"
 
 export default function UserListView() {
   const t = useTranslations()
@@ -44,6 +46,10 @@ export default function UserListView() {
     setPage(0)
   }
 
+  const handleAddUser = () => {
+    router.push("/users/create")
+  }
+
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Box
@@ -62,6 +68,14 @@ export default function UserListView() {
         >
           {t("user.userListView") || "User List"}
         </Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<AddIcon />}
+          onClick={handleAddUser}
+        >
+          {t("user.addUser") || "Add User"}
+        </Button>
         {/* <ThemeModeDisplay /> */}
       </Box>
 

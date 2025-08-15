@@ -14,7 +14,10 @@
     "name": "ชื่อ",
     "profile": "ข้อมูลผู้ใช้",
     "notFound": "ไม่พบผู้ใช้",
-    "noUsersFound": "ไม่พบผู้ใช้"
+    "noUsersFound": "ไม่พบผู้ใช้",
+    "createSuccess": "สร้างผู้ใช้สำเร็จ",
+    "updateSuccess": "อัปเดตผู้ใช้สำเร็จ",
+    "invalidEmail": "รูปแบบอีเมลไม่ถูกต้อง"
   },
   "signIn": {
     "signIn": "เข้าสู่ระบบ",
@@ -37,7 +40,8 @@
   "confirmPassword": "ยืนยันรหัสผ่าน",
   "common": {
     "back": "ย้อนกลับ",
-    "submit": "ยืนยัน"
+    "submit": "ยืนยัน",
+    "cancel": "ยกเลิก"
   },
   "pagination": {
     "of": "จาก",

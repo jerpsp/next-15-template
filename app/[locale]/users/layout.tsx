@@ -3,7 +3,7 @@
 import { AuthGuard, RoleGuard } from "@/auth/guard"
 import AuthLayout from "@/layout/auth"
 
-export default function UserLayout({
+export default function UserListLayout({
   children,
 }: {
   children: React.ReactNode

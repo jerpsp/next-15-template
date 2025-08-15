@@ -3,13 +3,13 @@
 import { AuthGuard, RoleGuard } from "@/auth/guard"
 import AuthLayout from "@/layout/auth"
 
-export default function UserDetailLayout({
+export default function UserCreateLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <RoleGuard allowedRoles={["admin"]} redirectTo="/error/403">
+    <RoleGuard allowedRoles={["admin"]}>
       <AuthGuard>{children}</AuthGuard>
     </RoleGuard>
   )

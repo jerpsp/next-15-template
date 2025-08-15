@@ -14,7 +14,10 @@
     "name": "Name",
     "profile": "User Profile",
     "notFound": "User not found",
-    "noUsersFound": "No users found"
+    "noUsersFound": "No users found",
+    "createSuccess": "User created successfully",
+    "updateSuccess": "User updated successfully",
+    "invalidEmail": "Invalid email format"
   },
   "signIn": {
     "signIn": "Sign In",
@@ -37,7 +40,8 @@
   "confirmPassword": "Confirm Password",
   "common": {
     "back": "Back",
-    "submit": "Submit"
+    "submit": "Submit",
+    "cancel": "Cancel"
   },
   "pagination": {
     "of": "of",
