@@ -23,6 +23,7 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
 import Visibility from "@mui/icons-material/Visibility"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
+import { enqueueSnackbar } from "notistack"
 
 export default function SignInView() {
   const t = useTranslations()
@@ -47,7 +48,7 @@ export default function SignInView() {
     }).then((res) => {
       if (res?.status !== 200) {
         setIsSubmitting(false)
-        // enqueueSnackbar(res?.error, { variant: "error" })
+        enqueueSnackbar(res?.error, { variant: "error" })
       }
     })
   }
