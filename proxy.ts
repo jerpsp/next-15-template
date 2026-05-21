@@ -6,32 +6,41 @@ import { getToken } from "next-auth/jwt"
 
 const intlMiddleware = createMiddleware(routing)
 
-export default async function middleware(request: NextRequest) {
+export default async function proxy(request: NextRequest) {
   const response = intlMiddleware(request)
 
   const token = await getToken({ req: request })
-  
-  // Check for auth errors
+
+  // Resolve current locale from cookie or default
+  const locale =
+    request.cookies.get("NEXT_LOCALE")?.value ||
+    routing.defaultLocale
+
+  // Check for auth errors → redirect to sign-in
   if (token?.error === "RefreshAccessTokenError") {
-    const signoutResponse = NextResponse.redirect(new URL("/signin", request.url))
-    
+    const signoutResponse = NextResponse.redirect(
+      new URL(`/${locale}/signin`, request.url)
+    )
     signoutResponse.cookies.delete("next-auth.session-token")
     signoutResponse.cookies.delete("next-auth.callback-url")
     signoutResponse.cookies.delete("next-auth.csrf-token")
-    
     return signoutResponse
   }
 
-  // Redirect users with role "user" to dashboard if they try to access restricted pages
+  // Restrict "user" role to /dashboard only
   if (token) {
     const userRole = (token as any).user?.role
     if (userRole === "user") {
       const path = request.nextUrl.pathname
-      // Check if the user is trying to access restricted pages
-      if (path.includes("/users") || 
-          (path !== "/dashboard" && !path.includes("/dashboard") && 
-           !path.includes("/signin") && !path.includes("/api"))) {
-        return NextResponse.redirect(new URL("/dashboard", request.url))
+      if (
+        path.includes("/users") ||
+        (!path.includes("/dashboard") &&
+          !path.includes("/signin") &&
+          !path.includes("/api"))
+      ) {
+        return NextResponse.redirect(
+          new URL(`/${locale}/dashboard`, request.url)
+        )
       }
     }
   }

@@ -1,12 +1,21 @@
+"use client"
+
 import { useCallback, useState, MouseEvent } from "react"
 import { useRouter, usePathname } from "@/locales/navigation"
+import { useLocale } from "next-intl"
 import Cookies from "js-cookie"
 import { MenuItem, IconButton, Typography, Popover } from "@mui/material"
+
+const allLangs = [
+  { label: "English", value: "en" },
+  { label: "Thai", value: "th" },
+]
 
 export default function LanguagePopover() {
   const router = useRouter()
   const pathname = usePathname()
-  const currentLang = Cookies.get("NEXT_LOCALE")
+  const locale = useLocale()                      // reactive — always correct
+  const currentLang = locale || "th"              // fallback to default
 
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
   const open = Boolean(anchorEl)
@@ -21,44 +30,28 @@ export default function LanguagePopover() {
 
   const handleChangeLang = useCallback(
     (newLang: string) => {
+      // Set cookie immediately so signin and other reads are in sync
+      Cookies.set("NEXT_LOCALE", newLang, { expires: 365 })
       router.push(pathname, { locale: newLang })
       handleClose()
     },
     [router, pathname]
   )
 
-  const allLangs = [
-    {
-      label: "English",
-      value: "en",
-      icon: "/assets/icons/en.png",
-    },
-    {
-      label: "Thai",
-      value: "th",
-      icon: "/assets/icons/th.png",
-    },
-  ]
-
-  const currnetLangLabel = useCallback(
-    () => allLangs.find((lang) => lang.value === currentLang)?.value ?? "",
-    [currentLang]
-  )
-
   return (
     <>
       <IconButton
         onClick={handleClick}
+        size="small"
         sx={{
-          width: 40,
-          height: 40,
-          ...(open && {
-            bgcolor: "action.selected",
-          }),
+          width: 36,
+          height: 36,
+          borderRadius: 1,
+          ...(open && { bgcolor: "action.selected" }),
         }}
       >
-        <Typography variant="h6" color="text.primary">
-          {currnetLangLabel().toUpperCase()}
+        <Typography variant="caption" fontWeight={600} color="text.primary" sx={{ letterSpacing: "0.04em" }}>
+          {currentLang.toUpperCase()}
         </Typography>
       </IconButton>
 
@@ -66,21 +59,18 @@ export default function LanguagePopover() {
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        sx={{ width: 160 }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        slotProps={{ paper: { sx: { mt: 0.5, minWidth: 130 } } }}
       >
         {allLangs.map((option) => (
           <MenuItem
             key={option.value}
             selected={option.value === currentLang}
             onClick={() => handleChangeLang(option.value)}
-            sx={{ m: 0.5, borderRadius: 1 }}
+            sx={{ fontSize: "0.875rem", m: 0.5, borderRadius: 1 }}
           >
-            {/* <Image src={option.icon} alt="en-lang" width="22" height="22" /> */}
-            <Typography sx={{ ml: 0 }}>{option.label}</Typography>
+            {option.label}
           </MenuItem>
         ))}
       </Popover>

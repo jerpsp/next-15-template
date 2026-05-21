@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
-import { useCallback, useEffect, useState } from "react"
+import { useEffect } from "react"
 
 type RoleGuardProps = {
   children: React.ReactNode
@@ -15,28 +15,21 @@ export default function RoleGuard({
 }: RoleGuardProps) {
   const router = useRouter()
   const { data: session, status } = useSession()
-  const [checked, setChecked] = useState(false)
 
-  const check = useCallback(() => {
-    if (status === "unauthenticated") {
-      router.replace("/signin")
-    } else if (status === "loading") {
-      return
-    } else if (status === "authenticated") {
-      const userRole = session?.user?.role || ""
-      if (!allowedRoles.includes(userRole)) {
-        router.replace(redirectTo)
-      } else {
-        setChecked(true)
-      }
-    }
-  }, [status, router, session, allowedRoles, redirectTo])
+  const userRole = session?.user?.role || ""
+  const isAllowed = allowedRoles.includes(userRole)
 
   useEffect(() => {
-    check()
-  }, [check])
+    if (status === "unauthenticated") {
+      router.replace("/signin")
+    } else if (status === "authenticated" && !isAllowed) {
+      router.replace(redirectTo)
+    }
+  }, [status, router, isAllowed, redirectTo])
 
-  if (!checked) return null
+  if (status === "loading") return null
+  if (status === "unauthenticated") return null
+  if (status === "authenticated" && !isAllowed) return null
 
   return <>{children}</>
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { createContext, useContext, useState, useEffect } from "react"
+import React, { createContext, useContext, useState } from "react"
 
 type ThemeMode = "light" | "dark"
 
@@ -16,25 +16,16 @@ export function ThemeContextProvider({
 }: {
   children: React.ReactNode
 }) {
-  // Initialize with system preference or saved preference from localStorage
-  const [mode, setMode] = useState<ThemeMode>("dark")
-
-  useEffect(() => {
-    // Check if window is defined (not server-side)
+  const [mode, setMode] = useState<ThemeMode>(() => {
     if (typeof window !== "undefined") {
-      // Check for saved theme preference in localStorage
       const savedMode = localStorage.getItem("themeMode") as ThemeMode
-      if (savedMode) {
-        setMode(savedMode)
-      } else {
-        // Use system preference as fallback
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        ).matches
-        setMode(prefersDark ? "dark" : "light")
-      }
+      if (savedMode) return savedMode
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light"
     }
-  }, [])
+    return "dark"
+  })
 
   const toggleThemeMode = () => {
     setMode((prevMode) => {

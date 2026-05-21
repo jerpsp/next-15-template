@@ -1,6 +1,6 @@
 {
   "user": {
-    "userListView": "มุมมองรายการผู้ใช้",
+    "userListView": "ผู้ใช้",
     "userDetailView": "รายละเอียดผู้ใช้",
     "userDetails": "รายละเอียดผู้ใช้",
     "editUser": "แก้ไขผู้ใช้",
@@ -9,26 +9,89 @@
     "email": "อีเมล",
     "firstName": "ชื่อ",
     "lastName": "นามสกุล",
-    "role": "Role",
+    "role": "บทบาท",
     "id": "รหัส",
     "name": "ชื่อ",
-    "profile": "ข้อมูลผู้ใช้",
+    "profile": "โปรไฟล์",
     "notFound": "ไม่พบผู้ใช้",
     "noUsersFound": "ไม่พบผู้ใช้",
     "createSuccess": "สร้างผู้ใช้สำเร็จ",
     "updateSuccess": "อัปเดตผู้ใช้สำเร็จ",
     "invalidEmail": "รูปแบบอีเมลไม่ถูกต้อง"
   },
+  "post": {
+    "list": "บทความ",
+    "add": "บทความใหม่",
+    "edit": "แก้ไขบทความ",
+    "create": "สร้าง",
+    "update": "อัปเดต",
+    "title": "ชื่อเรื่อง",
+    "slug": "สลัก",
+    "content": "เนื้อหา",
+    "excerpt": "บทคัดย่อ",
+    "status": "สถานะ",
+    "category": "หมวดหมู่",
+    "noCategory": "ไม่มีหมวดหมู่",
+    "createdAt": "วันที่สร้าง",
+    "draft": "ร่าง",
+    "published": "เผยแพร่แล้ว",
+    "archived": "เก็บถาวร",
+    "empty": "ไม่พบบทความ",
+    "notFound": "ไม่พบบทความ",
+    "createSuccess": "สร้างบทความสำเร็จ",
+    "updateSuccess": "อัปเดตบทความสำเร็จ",
+    "deleteSuccess": "ลบบทความสำเร็จ"
+  },
+  "category": {
+    "list": "หมวดหมู่",
+    "add": "หมวดหมู่ใหม่",
+    "edit": "แก้ไขหมวดหมู่",
+    "create": "สร้าง",
+    "update": "อัปเดต",
+    "name": "ชื่อ",
+    "slug": "สลัก",
+    "description": "คำอธิบาย",
+    "empty": "ไม่พบหมวดหมู่",
+    "notFound": "ไม่พบหมวดหมู่",
+    "createSuccess": "สร้างหมวดหมู่สำเร็จ",
+    "updateSuccess": "อัปเดตหมวดหมู่สำเร็จ",
+    "deleteSuccess": "ลบหมวดหมู่สำเร็จ"
+  },
+  "media": {
+    "list": "มีเดีย",
+    "upload": "อัปโหลด",
+    "uploadSuccess": "อัปโหลดไฟล์สำเร็จ",
+    "uploadError": "อัปโหลดล้มเหลว",
+    "deleteSuccess": "ลบไฟล์สำเร็จ",
+    "deleteError": "ลบล้มเหลว",
+    "empty": "ยังไม่มีมีเดีย"
+  },
+  "settings": {
+    "title": "การตั้งค่า",
+    "general": "ทั่วไป",
+    "siteName": "ชื่อเว็บไซต์",
+    "siteDescription": "คำอธิบายเว็บไซต์",
+    "defaultLanguage": "ภาษาเริ่มต้น",
+    "save": "บันทึก",
+    "saveSuccess": "บันทึกการตั้งค่าสำเร็จ"
+  },
+  "validation": {
+    "required": "กรุณากรอกข้อมูลในช่องนี้",
+    "email": "รูปแบบอีเมลไม่ถูกต้อง",
+    "minLength": "ต้องมีอย่างน้อย {min} ตัวอักษร",
+    "maxLength": "ต้องมีไม่เกิน {max} ตัวอักษร",
+    "passwordsMustMatch": "รหัสผ่านต้องตรงกัน"
+  },
   "signIn": {
     "signIn": "เข้าสู่ระบบ",
-    "pleaseSignIn": "กรุณาเข้าสู่ระบบเพื่อดำเนินการต่อ",
-    "email": "ที่อยู่อีเมล",
+    "pleaseSignIn": "กรอกข้อมูลเพื่อดำเนินการต่อ",
+    "email": "อีเมล",
     "password": "รหัสผ่าน",
     "confirmPassword": "ยืนยันรหัสผ่าน",
     "rememberMe": "จดจำฉัน",
     "forgotPassword": "ลืมรหัสผ่าน?"
   },
-  "signOut": "ลงชื่อออก",
+  "signOut": "ออกจากระบบ",
   "themeToggle": {
     "darkMode": "โหมดมืด",
     "lightMode": "โหมดสว่าง"
@@ -41,21 +104,26 @@
   "common": {
     "back": "ย้อนกลับ",
     "submit": "ยืนยัน",
-    "cancel": "ยกเลิก"
+    "cancel": "ยกเลิก",
+    "save": "บันทึก",
+    "delete": "ลบ",
+    "edit": "แก้ไข",
+    "create": "สร้าง",
+    "loading": "กำลังโหลด..."
   },
   "pagination": {
     "of": "จาก",
     "moreThan": "มากกว่า",
-    "rowsPerPage": "แถวต่อหน้า:",
-    "totalUsers": "จำนวนผู้ใช้ทั้งหมด: {count}"
+    "rowsPerPage": "ต่อหน้า:",
+    "totalUsers": "ทั้งหมด: {count}"
   },
   "resetPassword": {
     "forgotPassword": "ลืมรหัสผ่าน",
     "resetPassword": "รีเซ็ตรหัสผ่าน",
-    "emailSent": "อีเมลสำหรับรีเซ็ตรหัสผ่านถูกส่งไปยัง {email} หากอีเมลนี้มีในระบบ จะได้รับอีเมลรีเซ็ตรหัสผ่าน",
-    "enterEmail": "กรุณากรอกอีเมลของคุณเพื่อรับลิงก์สำหรับรีเซ็ตรหัสผ่าน",
-    "enterNewPassword": "กรุณากรอกรหัสผ่านใหม่ของคุณ",
-    "passwordResetSuccess": "รหัสผ่านของคุณถูกรีเซ็ตสำเร็จ",
-    "submit": "ส่งคำขอรีเซ็ตรหัสผ่าน"
+    "emailSent": "ส่งอีเมลไปยัง {email} เพื่อรีเซ็ตรหัสผ่านแล้ว",
+    "enterEmail": "กรอกอีเมลของคุณเพื่อรับลิงก์รีเซ็ตรหัสผ่าน",
+    "enterNewPassword": "กรอกรหัสผ่านใหม่ของคุณ",
+    "passwordResetSuccess": "รีเซ็ตรหัสผ่านสำเร็จ",
+    "submit": "ส่งคำขอรีเซ็ต"
   }
 }

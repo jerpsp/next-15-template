@@ -3,102 +3,116 @@
 import React from "react"
 import {
   AppBar,
-  Avatar,
   Box,
-  Button,
-  Container,
-  Divider,
-  Menu,
-  MenuItem,
   Toolbar,
   Typography,
+  IconButton,
+  Menu,
+  MenuItem,
+  Divider,
+  Avatar,
+  Chip,
 } from "@mui/material"
+import MenuIcon from "@mui/icons-material/Menu"
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown"
 import ThemeToggle from "@/layout/common/theme-toggle"
 import SignOutButton from "@/layout/common/signout-menu"
 import { useSession } from "next-auth/react"
 import LanguagePopover from "../common/language-popover"
 
-export default function Navbar() {
+type NavbarProps = {
+  onMenuClick?: () => void
+}
+
+const ROLE_COLOR: Record<string, "default" | "primary" | "warning" | "error"> = {
+  admin: "error",
+  moderator: "warning",
+  user: "default",
+}
+
+export default function Navbar({ onMenuClick }: NavbarProps) {
   const { data } = useSession()
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
 
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
+  const email = data?.user?.email ?? ""
+  const role = data?.user?.role ?? ""
+  const initials = email ? email[0].toUpperCase() : "?"
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            Next.js 15 App
-          </Typography>
+    <AppBar position="sticky" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+      <Toolbar sx={{ minHeight: 56, px: { xs: 2, md: 3 } }}>
+        <IconButton
+          edge="start"
+          onClick={onMenuClick}
+          sx={{ display: { md: "none" }, mr: 1 }}
+          size="small"
+        >
+          <MenuIcon fontSize="small" />
+        </IconButton>
 
-          <Box>
-            <LanguagePopover />
-            <Button
-              onClick={handleClick}
-              sx={{ ml: 2 }}
-              aria-controls={open ? "account-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-            >
-              <Typography variant="h6" color="text.primary">
-                {data?.user?.email}
+        <Typography
+          variant="subtitle2"
+          fontWeight={600}
+          sx={{ flexGrow: 1, letterSpacing: "-0.01em" }}
+        >
+          CMS
+        </Typography>
+
+        <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+          <LanguagePopover />
+
+          <IconButton
+            size="small"
+            onClick={(e) => setAnchorEl(e.currentTarget)}
+            sx={{ gap: 0.75, px: 1, borderRadius: 1.5 }}
+          >
+            <Avatar sx={{ width: 26, height: 26, fontSize: "0.7rem", bgcolor: "grey.200", color: "text.primary" }}>
+              {initials}
+            </Avatar>
+            <Box sx={{ display: { xs: "none", sm: "flex" }, flexDirection: "column", alignItems: "flex-start" }}>
+              <Typography variant="caption" color="text.primary" fontWeight={600} sx={{ lineHeight: 1.2 }}>
+                {email.split("@")[0]}
               </Typography>
-            </Button>
-          </Box>
-        </Toolbar>
+              <Typography variant="caption" color="text.secondary" sx={{ lineHeight: 1.2, fontSize: "0.65rem" }}>
+                {email}
+              </Typography>
+            </Box>
+            <KeyboardArrowDownIcon sx={{ fontSize: 16, color: "text.secondary" }} />
+          </IconButton>
+        </Box>
+
         <Menu
           anchorEl={anchorEl}
-          id="account-menu"
           open={open}
-          onClose={handleClose}
-          onClick={handleClose}
-          slotProps={{
-            paper: {
-              elevation: 0,
-              sx: {
-                overflow: "visible",
-                filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                mt: 1.5,
-                "& .MuiAvatar-root": {
-                  width: 32,
-                  height: 32,
-                  ml: -0.5,
-                  mr: 1,
-                },
-                "&::before": {
-                  content: '""',
-                  display: "block",
-                  position: "absolute",
-                  top: 0,
-                  right: 14,
-                  width: 10,
-                  height: 10,
-                  bgcolor: "background.paper",
-                  transform: "translateY(-50%) rotate(45deg)",
-                  zIndex: 0,
-                },
-              },
-            },
-          }}
+          onClose={() => setAnchorEl(null)}
+          onClick={() => setAnchorEl(null)}
           transformOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+          slotProps={{ paper: { sx: { mt: 1, minWidth: 200 } } }}
         >
-          <MenuItem onClick={handleClose}>
-            <Avatar /> Profile
-          </MenuItem>
+          {/* Profile info header */}
+          <Box sx={{ px: 2, py: 1.5 }}>
+            <Typography variant="body2" fontWeight={600} noWrap>
+              {email.split("@")[0]}
+            </Typography>
+            <Typography variant="caption" color="text.secondary" noWrap display="block">
+              {email}
+            </Typography>
+            <Chip
+              label={role}
+              size="small"
+              color={ROLE_COLOR[role] ?? "default"}
+              sx={{ mt: 0.75, height: 18, fontSize: "0.65rem", fontWeight: 600 }}
+            />
+          </Box>
           <Divider />
           <ThemeToggle />
+          <Divider />
           <SignOutButton />
         </Menu>
-      </Container>
+      </Toolbar>
     </AppBar>
   )
 }

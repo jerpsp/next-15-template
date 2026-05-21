@@ -19,20 +19,12 @@ const createUser = async (
   token: string | undefined
 ): Promise<CreateUserResponse> => {
   const baseUrl = process.env.NEXT_PUBLIC_API_ENDPOINT
-  if (!baseUrl) {
-    throw new Error("API endpoint is not defined")
-  }
-
-  if (!token) {
-    throw new Error("No access token available")
-  }
+  if (!baseUrl) throw new Error("API endpoint is not defined")
+  if (!token) throw new Error("No access token available")
 
   const response = await axios.post(`${baseUrl}/api/v1/users`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+    headers: { Authorization: `Bearer ${token}` },
   })
-
   return response.data
 }
 
@@ -44,7 +36,6 @@ export function useCreateUser() {
   return useMutation({
     mutationFn: (data: CreateUserRequest) => createUser(data, accessToken),
     onSuccess: () => {
-      // Invalidate and refetch users list
       queryClient.invalidateQueries({ queryKey: ["users"] })
     },
   })

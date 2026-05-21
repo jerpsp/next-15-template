@@ -15,7 +15,7 @@ export default function GuestGuard({
       router.replace(
         data?.provider === "keycloak" ? "keycloak-users" : "/users"
       )
-  }, [status, router])
+  }, [status, router, data?.provider])
 
   useEffect(() => {
     check()

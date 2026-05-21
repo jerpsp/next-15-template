@@ -66,17 +66,6 @@ const customJWT = (account: Account | null, user: User | AdapterUser) => {
     return credentialsJWT(account, user as unknown as CredentialsJWTProps)
 }
 
-// const keycloakJWT = (account: Account | null, user: User | AdapterUser) => {
-//   return {
-//     provider: account?.provider,
-//     idToken: account?.id_token,
-//     accessToken: account?.access_token,
-//     accessTokenExpires: (account?.expires_at as number) * 1000,
-//     refreshToken: account?.refresh_token,
-//     user,
-//   }
-// }
-
 const credentialsJWT = (account: Account | null, user: CredentialsJWTProps) => {
   const { access_token, refresh_token } = user
   const decodedUser = jwtDecode(access_token as string)

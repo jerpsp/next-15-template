@@ -1,5 +1,3 @@
-import { alpha } from "@mui/material/styles"
-
 export type ColorSchema =
   | "primary"
   | "secondary"
@@ -8,116 +6,112 @@ export type ColorSchema =
   | "warning"
   | "error"
 
-// SETUP COLORS
-
 export const grey = {
   0: "#FFFFFF",
-  100: "#F9FAFB",
-  200: "#F4F6F8",
-  300: "#DFE3E8",
-  400: "#C4CDD5",
-  500: "#919EAB",
-  600: "#637381",
-  700: "#454F5B",
-  800: "#212B36",
-  900: "#161C24",
+  50: "#FAFAFA",
+  100: "#F4F4F5",
+  200: "#E4E4E7",
+  300: "#D1D5DB",
+  400: "#A1A1AA",
+  500: "#71717A",
+  600: "#52525B",
+  700: "#3F3F46",
+  800: "#27272A",
+  900: "#18181B",
 }
 
 export const primary = {
-  light: "#5BE49B",
-  main: "#00A76F",
-  dark: "#007867",
+  light: "#3F3F46",
+  main: "#18181B",
+  dark: "#09090B",
   contrastText: "#FFFFFF",
 }
 
 export const secondary = {
-  light: "#C684FF",
-  main: "#8E33FF",
-  dark: "#5119B7",
+  light: "#A1A1AA",
+  main: "#71717A",
+  dark: "#52525B",
   contrastText: "#FFFFFF",
 }
 
 export const info = {
-  light: "#61F3F3",
-  main: "#00B8D9",
-  dark: "#006C9C",
+  light: "#93C5FD",
+  main: "#3B82F6",
+  dark: "#1D4ED8",
   contrastText: "#FFFFFF",
 }
 
 export const success = {
-  light: "#77ED8B",
+  light: "#86EFAC",
   main: "#22C55E",
-  dark: "#118D57",
-  contrastText: "#ffffff",
-}
-
-export const warning = {
-  light: "#FFD666",
-  main: "#FFAB00",
-  dark: "#B76E00",
-  contrastText: grey[800],
-}
-
-export const error = {
-  light: "#FFAC82",
-  main: "#FF5630",
-  dark: "#B71D18",
+  dark: "#15803D",
   contrastText: "#FFFFFF",
 }
 
-export const common = {
-  black: "#000000",
-  white: "#FFFFFF",
+export const warning = {
+  light: "#FCD34D",
+  main: "#F59E0B",
+  dark: "#B45309",
+  contrastText: "#FFFFFF",
 }
 
-export const action = {
-  hover: alpha(grey[500], 0.08),
-  selected: alpha(grey[500], 0.16),
-  disabled: alpha(grey[500], 0.8),
-  disabledBackground: alpha(grey[500], 0.24),
-  focus: alpha(grey[500], 0.24),
-  hoverOpacity: 0.08,
-  disabledOpacity: 0.48,
-}
-
-const base = {
-  primary,
-  secondary,
-  info,
-  success,
-  warning,
-  error,
-  grey,
-  common,
-  divider: alpha(grey[500], 0.2),
-  action,
+export const error = {
+  light: "#FCA5A5",
+  main: "#EF4444",
+  dark: "#B91C1C",
+  contrastText: "#FFFFFF",
 }
 
 export function palette(mode: "light" | "dark") {
   const light = {
-    ...base,
-    mode: "light",
+    mode: "light" as const,
+    primary,
+    secondary,
+    info,
+    success,
+    warning,
+    error,
+    grey,
+    divider: grey[200],
     text: {
       primary: grey[900],
-      secondary: grey[600],
-      disabled: grey[500],
+      secondary: grey[500],
+      disabled: grey[400],
     },
     background: {
       paper: "#FFFFFF",
-      default: "#FFFFFF",
+      default: grey[50],
     },
     action: {
-      ...base.action,
+      hover: grey[100],
+      selected: grey[100],
+      disabled: grey[400],
+      disabledBackground: grey[100],
+      focus: grey[200],
+      hoverOpacity: 0.06,
+      disabledOpacity: 0.4,
       active: grey[600],
     },
   }
 
   const dark = {
-    ...base,
-    mode: "dark",
+    mode: "dark" as const,
+    primary: {
+      light: "#A1A1AA",
+      main: "#FAFAFA",
+      dark: "#FFFFFF",
+      contrastText: "#18181B",
+    },
+    secondary,
+    info,
+    success,
+    warning,
+    error,
+    grey,
+    divider: grey[700],
     text: {
-      primary: "#FFFFFF",
-      secondary: grey[500],
+      primary: grey[50],
+      secondary: grey[400],
       disabled: grey[600],
     },
     background: {
@@ -125,10 +119,17 @@ export function palette(mode: "light" | "dark") {
       default: grey[900],
     },
     action: {
-      ...base.action,
-      active: grey[500],
+      hover: grey[700],
+      selected: grey[700],
+      disabled: grey[600],
+      disabledBackground: grey[800],
+      focus: grey[700],
+      hoverOpacity: 0.08,
+      disabledOpacity: 0.4,
+      active: grey[400],
     },
   }
 
   return mode === "light" ? light : dark
 }
+

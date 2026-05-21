@@ -1,39 +1,102 @@
 {
   "user": {
-    "userListView": "User List View",
+    "userListView": "Users",
     "userDetailView": "User Detail",
     "userDetails": "User Details",
     "editUser": "Edit User",
     "deleteUser": "Delete User",
-    "addUser": "Add User",
+    "addUser": "New User",
     "email": "Email",
     "firstName": "First Name",
     "lastName": "Last Name",
     "role": "Role",
     "id": "ID",
     "name": "Name",
-    "profile": "User Profile",
+    "profile": "Profile",
     "notFound": "User not found",
     "noUsersFound": "No users found",
     "createSuccess": "User created successfully",
     "updateSuccess": "User updated successfully",
     "invalidEmail": "Invalid email format"
   },
+  "post": {
+    "list": "Posts",
+    "add": "New Post",
+    "edit": "Edit Post",
+    "create": "Create",
+    "update": "Update",
+    "title": "Title",
+    "slug": "Slug",
+    "content": "Content",
+    "excerpt": "Excerpt",
+    "status": "Status",
+    "category": "Category",
+    "noCategory": "None",
+    "createdAt": "Created",
+    "draft": "Draft",
+    "published": "Published",
+    "archived": "Archived",
+    "empty": "No posts found",
+    "notFound": "Post not found",
+    "createSuccess": "Post created successfully",
+    "updateSuccess": "Post updated successfully",
+    "deleteSuccess": "Post deleted successfully"
+  },
+  "category": {
+    "list": "Categories",
+    "add": "New Category",
+    "edit": "Edit Category",
+    "create": "Create",
+    "update": "Update",
+    "name": "Name",
+    "slug": "Slug",
+    "description": "Description",
+    "empty": "No categories found",
+    "notFound": "Category not found",
+    "createSuccess": "Category created successfully",
+    "updateSuccess": "Category updated successfully",
+    "deleteSuccess": "Category deleted successfully"
+  },
+  "media": {
+    "list": "Media",
+    "upload": "Upload",
+    "uploadSuccess": "File uploaded successfully",
+    "uploadError": "Upload failed",
+    "deleteSuccess": "File deleted successfully",
+    "deleteError": "Delete failed",
+    "empty": "No media uploaded yet"
+  },
+  "settings": {
+    "title": "Settings",
+    "general": "General",
+    "siteName": "Site Name",
+    "siteDescription": "Site Description",
+    "defaultLanguage": "Default Language",
+    "save": "Save",
+    "saveSuccess": "Settings saved"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Invalid email format",
+    "minLength": "Must be at least {min} characters",
+    "maxLength": "Must be at most {max} characters",
+    "passwordsMustMatch": "Passwords must match"
+  },
   "signIn": {
-    "signIn": "Sign In",
-    "pleaseSignIn": "Please sign in to continue.",
-    "email": "Email Address",
+    "signIn": "Sign in",
+    "pleaseSignIn": "Enter your credentials to continue.",
+    "email": "Email",
     "password": "Password",
     "confirmPassword": "Confirm Password",
     "rememberMe": "Remember me",
     "forgotPassword": "Forgot password?"
   },
-  "signOut": "Logout",
+  "signOut": "Sign out",
   "themeToggle": {
     "darkMode": "Dark Mode",
     "lightMode": "Light Mode"
   },
-  "required": "{name} must be required",
+  "required": "{name} is required",
   "passwordsMustMatch": "Passwords must match",
   "email": "Email",
   "password": "Password",
@@ -41,21 +104,26 @@
   "common": {
     "back": "Back",
     "submit": "Submit",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "loading": "Loading..."
   },
   "pagination": {
     "of": "of",
     "moreThan": "more than",
-    "rowsPerPage": "Rows per page:",
-    "totalUsers": "Total Users: {count}"
+    "rowsPerPage": "Per page:",
+    "totalUsers": "Total: {count}"
   },
   "resetPassword": {
     "forgotPassword": "Forgot Password",
     "resetPassword": "Reset Password",
-    "emailSent": "An email has been sent to {email} with instructions to reset your password if that email is registered.",
-    "enterEmail": "Please enter your email address to receive a link to reset your password.",
-    "enterNewPassword": "Please enter your new password.",
+    "emailSent": "An email has been sent to {email} with password reset instructions.",
+    "enterEmail": "Enter your email address to receive a reset link.",
+    "enterNewPassword": "Enter your new password.",
     "passwordResetSuccess": "Your password has been reset successfully.",
-    "submit": "Submit Password Reset Request"
+    "submit": "Send Reset Link"
   }
 }

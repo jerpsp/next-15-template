@@ -1,12 +1,12 @@
 {
-  "name": "next-15",
+  "name": "next-16",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
@@ -21,7 +21,7 @@
     "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",
     "lodash": "^4.17.21",
-    "next": "15.3.2",
+    "next": "^16.2.6",
     "next-auth": "^4.24.11",
     "next-intl": "^4.1.0",
     "notistack": "^3.0.2",
@@ -31,11 +31,17 @@
     "yup": "^1.6.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
+    "@next/eslint-plugin-next": "^16.2.6",
     "@types/js-cookie": "^3.0.6",
     "@types/lodash": "^4.17.18",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "typescript": "^5"
+    "eslint": "9",
+    "eslint-config-next": "^16.2.6",
+    "typescript": "^5",
+    "typescript-eslint": "^8.59.4"
   }
 }
